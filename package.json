@@ -8,8 +8,5 @@
   },
   "keywords": [],
   "author": "Tierney Cyren <hello@bnb.im>",
-  "license": "MIT",
-  "dependencies": {
-    "docs-parser": "0.0.2"
-  }
+  "license": "MIT"
 }
