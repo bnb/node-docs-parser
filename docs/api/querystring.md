@@ -19,7 +19,7 @@ The `querystring.encode()` function is an alias for `querystring.stringify()`.
 
 ### `querystring.escape(str)`
 
-- `str`: string
+- `str` String
 
 The `querystring.escape()` method performs URL percent-encoding on the given
 `str` in a manner that is optimized for the specific requirements of URL
