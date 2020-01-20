@@ -1,5 +1,6 @@
 # querystring
-> Utilities for parsing and formatting URL query strings.
+
+>Utilities for parsing and formatting URL query strings.
 
 The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
