@@ -1,7 +1,7 @@
 [
   {
     "name": "querystring",
-    "description": "",
+    "description": "> Utilities for parsing and formatting URL query strings.\n\nThe `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:",
     "slug": "querystring",
     "websiteUrl": "http://electronjs.org/docs/api/querystring",
     "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/querystring.md",
@@ -38,7 +38,8 @@
             "description": "",
             "required": true,
             "collection": false,
-            "type": ": string"
+            "type": "String",
+            "possibleValues": null
           }
         ],
         "returns": null,
@@ -175,6 +176,701 @@
       }
     ],
     "properties": [],
-    "events": []
+    "events": [],
+    "exportedClasses": []
+  },
+  {
+    "name": "V8",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Module",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "methods": [
+      {
+        "name": "cachedDataVersionTag",
+        "signature": "()",
+        "description": "Returned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapSpaceStatistics",
+        "signature": "()",
+        "description": "Returned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number",
+        "parameters": [],
+        "returns": {
+          "collection": true,
+          "type": "Object",
+          "properties": [
+            {
+              "name": "space_name",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "String",
+              "possibleValues": null
+            },
+            {
+              "name": "space_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            },
+            {
+              "name": "space_used_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            },
+            {
+              "name": "space_available_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            },
+            {
+              "name": "physical_space_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            }
+          ]
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapSnapshot",
+        "signature": "()",
+        "description": "A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "stream.Readable"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapStatistics",
+        "signature": "()",
+        "description": "* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "Object",
+          "properties": [
+            {
+              "name": "total_heap_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "total_heap_size_executable",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "total_physical_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "total_available_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "used_heap_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "heap_size_limit",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "malloced_memory",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "peak_malloced_memory",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "does_zap_garbage",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "number_of_native_contexts",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "number_of_detached_contexts",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            }
+          ]
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapCodeStatistics",
+        "signature": "()",
+        "description": "Returns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "setFlagsFromString",
+        "signature": "(flags)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "flags",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "string"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeHeapSnapshot",
+        "signature": "(filename)",
+        "description": "The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.",
+        "parameters": [
+          {
+            "name": "filename",
+            "description": "The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.",
+            "required": true,
+            "collection": false,
+            "type": "string"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "string"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "serialize",
+        "signature": "(value)",
+        "description": "Uses a [`DefaultSerializer`][] to serialize `value` into a buffer.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "any"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "Buffer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "deserialize",
+        "signature": "(buffer)",
+        "description": "Uses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.",
+        "parameters": [
+          {
+            "name": "buffer",
+            "description": "A buffer returned by [`serialize()`][].",
+            "required": true,
+            "collection": false,
+            "type": [
+              {
+                "collection": false,
+                "type": "Buffer"
+              },
+              {
+                "collection": false,
+                "type": "TypedArray"
+              },
+              {
+                "collection": false,
+                "type": "DataView"
+              }
+            ]
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "exportedClasses": []
+  },
+  {
+    "name": "Serializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": {
+      "signature": "()",
+      "parameters": []
+    },
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [
+      {
+        "name": "writeHeader",
+        "signature": "()",
+        "description": "Writes out a header, which includes the serialization format version.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeValue",
+        "signature": "(value)",
+        "description": "Serializes a JavaScript value and adds the serialized representation to the internal buffer.\n\nThis throws an error if `value` cannot be serialized.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "any"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "releaseBuffer",
+        "signature": "()",
+        "description": "Returns the stored internal buffer. This serializer should not be used once the buffer is released. Calling this method results in undefined behavior if a previous write has failed.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "Buffer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "transferArrayBuffer",
+        "signature": "(id, arrayBuffer)",
+        "description": "Marks an `ArrayBuffer` as having its contents transferred out of band. Pass the corresponding `ArrayBuffer` in the deserializing context to [`deserializer.transferArrayBuffer()`][].",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A 32-bit unsigned integer.",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          },
+          {
+            "name": "arrayBuffer",
+            "description": "An `ArrayBuffer` instance.",
+            "required": true,
+            "collection": false,
+            "type": "ArrayBuffer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeUint32",
+        "signature": "(value)",
+        "description": "Write a raw 32-bit unsigned integer. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeUint64",
+        "signature": "(hi, lo)",
+        "description": "Write a raw 64-bit unsigned integer, split into high and low 32-bit parts. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "hi",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          },
+          {
+            "name": "lo",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeDouble",
+        "signature": "(value)",
+        "description": "Write a JS `number` value. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "number"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeRawBytes",
+        "signature": "(buffer)",
+        "description": "Write raw bytes into the serializer’s internal buffer. The deserializer will require a way to compute the length of the buffer. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "buffer",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": [
+              {
+                "collection": false,
+                "type": "Buffer"
+              },
+              {
+                "collection": false,
+                "type": "TypedArray"
+              },
+              {
+                "collection": false,
+                "type": "DataView"
+              }
+            ]
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_writeHostObject",
+        "signature": "(object)",
+        "description": "This method is called to write some kind of host object, i.e. an object created by native C++ bindings. If it is not possible to serialize `object`, a suitable exception should be thrown.\n\nThis method is not present on the `Serializer` class itself but can be provided by subclasses.",
+        "parameters": [
+          {
+            "name": "object",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "Object",
+            "properties": []
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_getDataCloneError",
+        "signature": "(message)",
+        "description": "This method is called to generate error objects that will be thrown when an object can not be cloned.\n\nThis method defaults to the [`Error`][] constructor and can be overridden on subclasses.",
+        "parameters": [
+          {
+            "name": "message",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "string"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_getSharedArrayBufferId",
+        "signature": "(sharedArrayBuffer)",
+        "description": "This method is called when the serializer is going to serialize a `SharedArrayBuffer` object. It must return an unsigned 32-bit integer ID for the object, using the same ID if this `SharedArrayBuffer` has already been serialized. When deserializing, this ID will be passed to [`deserializer.transferArrayBuffer()`][].\n\nIf the object cannot be serialized, an exception should be thrown.\n\nThis method is not present on the `Serializer` class itself but can be provided by subclasses.",
+        "parameters": [
+          {
+            "name": "sharedArrayBuffer",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "SharedArrayBuffer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_setTreatArrayBufferViewsAsHostObjects",
+        "signature": "(flag)",
+        "description": "Indicate whether to treat `TypedArray` and `DataView` objects as host objects, i.e. pass them to [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "flag",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "boolean **Default:** `false`"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "serializer"
+  },
+  {
+    "name": "`v8.Deserializer`",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [
+      {
+        "name": "readHeader",
+        "signature": "()",
+        "description": "Reads and validates a header (including the format version). May, for example, reject an invalid or unsupported wire format. In that case an `Error` is thrown.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "readValue",
+        "signature": "()",
+        "description": "Deserializes a JavaScript value from the buffer and returns it.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "transferArrayBuffer",
+        "signature": "(id, arrayBuffer)",
+        "description": "Marks an `ArrayBuffer` as having its contents transferred out of band. Pass the corresponding `ArrayBuffer` in the serializing context to [`serializer.transferArrayBuffer()`][] (or return the `id` from [`serializer._getSharedArrayBufferId()`][] in the case of `SharedArrayBuffer`s).",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A 32-bit unsigned integer.",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          },
+          {
+            "name": "arrayBuffer",
+            "description": "An `ArrayBuffer` instance.",
+            "required": true,
+            "collection": false,
+            "type": [
+              {
+                "collection": false,
+                "type": "ArrayBuffer"
+              },
+              {
+                "collection": false,
+                "type": "SharedArrayBuffer"
+              }
+            ]
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "getWireFormatVersion",
+        "signature": "()",
+        "description": "Reads the underlying wire format version. Likely mostly to be useful to legacy code reading old wire format versions. May not be called before `.readHeader()`.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "readUint32",
+        "signature": "()",
+        "description": "Read a raw 32-bit unsigned integer and return it. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "readUint64",
+        "signature": "()",
+        "description": "Read a raw 64-bit unsigned integer and return it as an array `[hi, lo]` with two 32-bit unsigned integer entries. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [],
+        "returns": {
+          "collection": true,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "readDouble",
+        "signature": "()",
+        "description": "Returns: `number`\n\nRead a JS `number` value. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "readRawBytes",
+        "signature": "(length)",
+        "description": "Read raw bytes from the deserializer’s internal buffer. The `length` parameter must correspond to the length of the buffer that was passed to [`serializer.writeRawBytes()`][]. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [
+          {
+            "name": "length",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "Buffer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "_readHostObject",
+        "signature": "()",
+        "description": "This method is called to read some kind of host object, i.e. an object that is created by native C++ bindings. If it is not possible to deserialize the data, a suitable exception should be thrown.\n\nThis method is not present on the `Deserializer` class itself but can be provided by subclasses.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "deserializer"
+  },
+  {
+    "name": "v8.DefaultSerializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "v8DefaultSerializer"
+  },
+  {
+    "name": "v8.DefaultDeserializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "v8DefaultDeserializer"
   }
 ]
