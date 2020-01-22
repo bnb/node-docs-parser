@@ -1,7 +1,7 @@
 [
   {
     "name": "querystring",
-    "description": "",
+    "description": "> Utilities for parsing and formatting URL query strings.\n\nThe `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:",
     "slug": "querystring",
     "websiteUrl": "http://electronjs.org/docs/api/querystring",
     "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/querystring.md",
@@ -38,7 +38,8 @@
             "description": "",
             "required": true,
             "collection": false,
-            "type": ": string"
+            "type": "String",
+            "possibleValues": null
           }
         ],
         "returns": null,
@@ -175,6 +176,1211 @@
       }
     ],
     "properties": [],
-    "events": []
+    "events": [],
+    "exportedClasses": []
+  },
+  {
+    "name": "V8",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Module",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "methods": [
+      {
+        "name": "cachedDataVersionTag",
+        "signature": "()",
+        "description": "Returned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapSpaceStatistics",
+        "signature": "()",
+        "description": "Returned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number",
+        "parameters": [],
+        "returns": {
+          "collection": true,
+          "type": "Object",
+          "properties": [
+            {
+              "name": "space_name",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "String",
+              "possibleValues": null
+            },
+            {
+              "name": "space_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            },
+            {
+              "name": "space_used_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            },
+            {
+              "name": "space_available_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            },
+            {
+              "name": "physical_space_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Number"
+            }
+          ]
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapSnapshot",
+        "signature": "()",
+        "description": "A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "stream.Readable"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapStatistics",
+        "signature": "()",
+        "description": "* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "Object",
+          "properties": [
+            {
+              "name": "total_heap_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "total_heap_size_executable",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "total_physical_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "total_available_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "used_heap_size",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "heap_size_limit",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "malloced_memory",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "peak_malloced_memory",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "does_zap_garbage",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "number_of_native_contexts",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            },
+            {
+              "name": "number_of_detached_contexts",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "number"
+            }
+          ]
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "getHeapCodeStatistics",
+        "signature": "()",
+        "description": "Returns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "setFlagsFromString",
+        "signature": "(flags)",
+        "description": "",
+        "parameters": [
+          {
+            "name": "flags",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "string"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeHeapSnapshot",
+        "signature": "(filename)",
+        "description": "The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.",
+        "parameters": [
+          {
+            "name": "filename",
+            "description": "The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.",
+            "required": true,
+            "collection": false,
+            "type": "string"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "string"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "serialize",
+        "signature": "(value)",
+        "description": "Uses a [`DefaultSerializer`][] to serialize `value` into a buffer.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "any"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "Buffer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "deserialize",
+        "signature": "(buffer)",
+        "description": "Uses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.",
+        "parameters": [
+          {
+            "name": "buffer",
+            "description": "A buffer returned by [`serialize()`][].",
+            "required": true,
+            "collection": false,
+            "type": [
+              {
+                "collection": false,
+                "type": "Buffer"
+              },
+              {
+                "collection": false,
+                "type": "TypedArray"
+              },
+              {
+                "collection": false,
+                "type": "DataView"
+              }
+            ]
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "exportedClasses": []
+  },
+  {
+    "name": "Serializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": {
+      "signature": "()",
+      "parameters": []
+    },
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [
+      {
+        "name": "writeHeader",
+        "signature": "()",
+        "description": "Writes out a header, which includes the serialization format version.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeValue",
+        "signature": "(value)",
+        "description": "Serializes a JavaScript value and adds the serialized representation to the internal buffer.\n\nThis throws an error if `value` cannot be serialized.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "any"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "releaseBuffer",
+        "signature": "()",
+        "description": "Returns the stored internal buffer. This serializer should not be used once the buffer is released. Calling this method results in undefined behavior if a previous write has failed.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "Buffer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "transferArrayBuffer",
+        "signature": "(id, arrayBuffer)",
+        "description": "Marks an `ArrayBuffer` as having its contents transferred out of band. Pass the corresponding `ArrayBuffer` in the deserializing context to [`deserializer.transferArrayBuffer()`][].",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A 32-bit unsigned integer.",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          },
+          {
+            "name": "arrayBuffer",
+            "description": "An `ArrayBuffer` instance.",
+            "required": true,
+            "collection": false,
+            "type": "ArrayBuffer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeUint32",
+        "signature": "(value)",
+        "description": "Write a raw 32-bit unsigned integer. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeUint64",
+        "signature": "(hi, lo)",
+        "description": "Write a raw 64-bit unsigned integer, split into high and low 32-bit parts. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "hi",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          },
+          {
+            "name": "lo",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeDouble",
+        "signature": "(value)",
+        "description": "Write a JS `number` value. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "number"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "writeRawBytes",
+        "signature": "(buffer)",
+        "description": "Write raw bytes into the serializer’s internal buffer. The deserializer will require a way to compute the length of the buffer. For use inside of a custom [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "buffer",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": [
+              {
+                "collection": false,
+                "type": "Buffer"
+              },
+              {
+                "collection": false,
+                "type": "TypedArray"
+              },
+              {
+                "collection": false,
+                "type": "DataView"
+              }
+            ]
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_writeHostObject",
+        "signature": "(object)",
+        "description": "This method is called to write some kind of host object, i.e. an object created by native C++ bindings. If it is not possible to serialize `object`, a suitable exception should be thrown.\n\nThis method is not present on the `Serializer` class itself but can be provided by subclasses.",
+        "parameters": [
+          {
+            "name": "object",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "Object",
+            "properties": []
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_getDataCloneError",
+        "signature": "(message)",
+        "description": "This method is called to generate error objects that will be thrown when an object can not be cloned.\n\nThis method defaults to the [`Error`][] constructor and can be overridden on subclasses.",
+        "parameters": [
+          {
+            "name": "message",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "string"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_getSharedArrayBufferId",
+        "signature": "(sharedArrayBuffer)",
+        "description": "This method is called when the serializer is going to serialize a `SharedArrayBuffer` object. It must return an unsigned 32-bit integer ID for the object, using the same ID if this `SharedArrayBuffer` has already been serialized. When deserializing, this ID will be passed to [`deserializer.transferArrayBuffer()`][].\n\nIf the object cannot be serialized, an exception should be thrown.\n\nThis method is not present on the `Serializer` class itself but can be provided by subclasses.",
+        "parameters": [
+          {
+            "name": "sharedArrayBuffer",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "SharedArrayBuffer"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "_setTreatArrayBufferViewsAsHostObjects",
+        "signature": "(flag)",
+        "description": "Indicate whether to treat `TypedArray` and `DataView` objects as host objects, i.e. pass them to [`serializer._writeHostObject()`][].",
+        "parameters": [
+          {
+            "name": "flag",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "boolean **Default:** `false`"
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "serializer"
+  },
+  {
+    "name": "Deserializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": {
+      "signature": "(buffer)",
+      "parameters": [
+        {
+          "name": "buffer",
+          "description": "A buffer returned by [`serializer.releaseBuffer()`][].",
+          "required": true,
+          "collection": false,
+          "type": [
+            {
+              "collection": false,
+              "type": "Buffer"
+            },
+            {
+              "collection": false,
+              "type": "TypedArray"
+            },
+            {
+              "collection": false,
+              "type": "DataView"
+            }
+          ]
+        }
+      ]
+    },
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [
+      {
+        "name": "readHeader",
+        "signature": "()",
+        "description": "Reads and validates a header (including the format version). May, for example, reject an invalid or unsupported wire format. In that case an `Error` is thrown.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "readValue",
+        "signature": "()",
+        "description": "Deserializes a JavaScript value from the buffer and returns it.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "transferArrayBuffer",
+        "signature": "(id, arrayBuffer)",
+        "description": "Marks an `ArrayBuffer` as having its contents transferred out of band. Pass the corresponding `ArrayBuffer` in the serializing context to [`serializer.transferArrayBuffer()`][] (or return the `id` from [`serializer._getSharedArrayBufferId()`][] in the case of `SharedArrayBuffer`s).",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "A 32-bit unsigned integer.",
+            "required": true,
+            "collection": false,
+            "type": "Integer"
+          },
+          {
+            "name": "arrayBuffer",
+            "description": "An `ArrayBuffer` instance.",
+            "required": true,
+            "collection": false,
+            "type": [
+              {
+                "collection": false,
+                "type": "ArrayBuffer"
+              },
+              {
+                "collection": false,
+                "type": "SharedArrayBuffer"
+              }
+            ]
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "getWireFormatVersion",
+        "signature": "()",
+        "description": "Reads the underlying wire format version. Likely mostly to be useful to legacy code reading old wire format versions. May not be called before `.readHeader()`.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "readUint32",
+        "signature": "()",
+        "description": "Read a raw 32-bit unsigned integer and return it. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "readUint64",
+        "signature": "()",
+        "description": "Read a raw 64-bit unsigned integer and return it as an array `[hi, lo]` with two 32-bit unsigned integer entries. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [],
+        "returns": {
+          "collection": true,
+          "type": "integer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "readDouble",
+        "signature": "()",
+        "description": "Returns: `number`\n\nRead a JS `number` value. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "readRawBytes",
+        "signature": "(length)",
+        "description": "Read raw bytes from the deserializer’s internal buffer. The `length` parameter must correspond to the length of the buffer that was passed to [`serializer.writeRawBytes()`][]. For use inside of a custom [`deserializer._readHostObject()`][].",
+        "parameters": [
+          {
+            "name": "length",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "integer"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "Buffer"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "_readHostObject",
+        "signature": "()",
+        "description": "This method is called to read some kind of host object, i.e. an object that is created by native C++ bindings. If it is not possible to deserialize the data, a suitable exception should be thrown.\n\nThis method is not present on the `Deserializer` class itself but can be provided by subclasses.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "deserializer"
+  },
+  {
+    "name": "DefaultSerializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "defaultSerializer"
+  },
+  {
+    "name": "DefaultDeserializer",
+    "description": "> The `v8` module exposes APIs that are specific to the version of V8 built into the Node.js binary.\n\nIt can be accessed using:\n\n```\nconst v8 = require('v8');\n```\n\nThe APIs and implementation are subject to change at any time.\n\n### Methods\n\n\n\n### `v8.cachedDataVersionTag()`\n\nReturns `integer`\n\nReturned integer represents a \"version tag\" derived from the V8 version, command line flags and detected CPU features. This is useful for determining whether a [`vm.Script`][] `cachedData` buffer is compatible with this instance of V8.\n\n### `v8.getHeapSpaceStatistics()`\n\nReturns `Object[]`\n\nReturned object includes statistics about the V8 heap spaces, i.e. the segments which make up the V8 heap. Neither the ordering of heap spaces, nor the availability of a heap space can be guaranteed as the statistics are provided via the V8 [`GetHeapSpaceStatistics`][] function and may change from one V8 version to the next.\n\nThe value returned is an array of objects containing the following properties:\n\n* `space_name` String\n* `space_size` Number\n* `space_used_size` Number\n* `space_available_size` Number\n* `physical_space_size` Number\n\n```\n[\n  {\n    \"space_name\": \"new_space\",\n    \"space_size\": 2063872,\n    \"space_used_size\": 951112,\n    \"space_available_size\": 80824,\n    \"physical_space_size\": 2063872\n  },\n  {\n    \"space_name\": \"old_space\",\n    \"space_size\": 3090560,\n    \"space_used_size\": 2493792,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 3090560\n  },\n  {\n    \"space_name\": \"code_space\",\n    \"space_size\": 1260160,\n    \"space_used_size\": 644256,\n    \"space_available_size\": 960,\n    \"physical_space_size\": 1260160\n  },\n  {\n    \"space_name\": \"map_space\",\n    \"space_size\": 1094160,\n    \"space_used_size\": 201608,\n    \"space_available_size\": 0,\n    \"physical_space_size\": 1094160\n  },\n  {\n    \"space_name\": \"large_object_space\",\n    \"space_size\": 0,\n    \"space_used_size\": 0,\n    \"space_available_size\": 1490980608,\n    \"physical_space_size\": 0\n  }\n]\n```\n\n### `v8.getHeapSnapshot()`\n\nReturns `stream.Readable` - A Readable Stream containing the V8 heap snapshot.\n\nGenerates a snapshot of the current V8 heap and returns a Readable Stream that may be used to read the JSON serialized representation. This JSON stream format is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\n```\nconst stream = v8.getHeapSnapshot();\nstream.pipe(process.stdout);\n```\n\n### `v8.getHeapStatistics()`\n\nReturns `Object`\n\n* `total_heap_size` number\n* `total_heap_size_executable` number\n* `total_physical_size` number\n* `total_available_size` number\n* `used_heap_size` number\n* `heap_size_limit` number\n* `malloced_memory` number\n* `peak_malloced_memory` number\n* `does_zap_garbage` number\n* `number_of_native_contexts` number\n* `number_of_detached_contexts` number\n\n`does_zap_garbage` is a 0/1 boolean, which signifies whether the `--zap_code_space` option is enabled or not. This makes V8 overwrite heap garbage with a bit pattern. The RSS footprint (resident memory set) gets bigger because it continuously touches all heap pages and that makes them less likely to get swapped out by the operating system.\n\n`number_of_native_contexts` The value of native_context is the number of the top-level contexts currently active. Increase of this number over time indicates a memory leak.\n\n`number_of_detached_contexts` The value of detached_context is the number of contexts that were detached and not yet garbage collected. This number being non-zero indicates a potential memory leak.\n\n<!-- eslint-skip -->\n\n```\n{\n  total_heap_size: 7326976,\n  total_heap_size_executable: 4194304,\n  total_physical_size: 7326976,\n  total_available_size: 1152656,\n  used_heap_size: 3476208,\n  heap_size_limit: 1535115264,\n  malloced_memory: 16384,\n  peak_malloced_memory: 1127496,\n  does_zap_garbage: 0,\n  number_of_native_contexts: 1,\n  number_of_detached_contexts: 0\n}\n```\n\n### `v8.getHeapCodeStatistics()`\n\nReturns: `Object`\n\nReturned object includes the following properties:\n\n* `code_and_metadata_size` Number\n* `bytecode_and_metadata_size` Number\n* `external_script_source_size` Number\n\n<!-- eslint-skip -->\n\n```\n{\n  code_and_metadata_size: 212208,\n  bytecode_and_metadata_size: 161368,\n  external_script_source_size: 1410794\n}\n```\n\n### `v8.setFlagsFromString(flags)`\n\n* `flags` string\n\n### `v8.writeHeapSnapshot(filename)`\n\n* `filename` string - The file path where the V8 heap snapshot is to be saved. If not specified, a file name with the pattern `'Heap-${yyyymmdd}-${hhmmss}-${pid}-${thread_id}.heapsnapshot'` will be generated, where `{pid}` will be the PID of the Node.js process, `{thread_id}` will be `0` when `writeHeapSnapshot()` is called from the main Node.js thread or the id of a worker thread.\n\nReturns `string` - The filename where the snapshot was saved.\n\nGenerates a snapshot of the current V8 heap and writes it to a JSON file. This file is intended to be used with tools such as Chrome DevTools. The JSON schema is undocumented and specific to the V8 engine, and may change from one version of V8 to the next.\n\nA heap snapshot is specific to a single V8 isolate. When using [Worker Threads][], a heap snapshot generated from the main thread will not contain any information about the workers, and vice versa.\n\n```\nconst { writeHeapSnapshot } = require('v8');\nconst {\n  Worker,\n  isMainThread,\n  parentPort\n} = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n\n  worker.once('message', (filename) => {\n    console.log(`worker heapdump: ${filename}`);\n    // Now get a heapdump for the main thread.\n    console.log(`main thread heapdump: ${writeHeapSnapshot()}`);\n  });\n\n  // Tell the worker to create a heapdump.\n  worker.postMessage('heapdump');\n} else {\n  parentPort.once('message', (message) => {\n    if (message === 'heapdump') {\n      // Generate a heapdump for the worker\n      // and return the filename to the parent.\n      parentPort.postMessage(writeHeapSnapshot());\n    }\n  });\n}\n```\n\n### `v8.serialize(value)`\n\n* `value` any\n\nReturns `Buffer`\n\nUses a [`DefaultSerializer`][] to serialize `value` into a buffer.\n\n### `v8.deserialize(buffer)`\n\n* `buffer` Buffer|TypedArray|DataView - A buffer returned by [`serialize()`][].\n\nUses a [`DefaultDeserializer`][] with default options to read a JS value from a buffer.\n\n### Class: Serializer\n\n> The serialization API provides means of serializing JavaScript values in a way that is compatible with the [HTML structured clone algorithm][]. The format is backward-compatible (i.e. safe to store to disk). v8.Serializer is the tool used to achieve this.\n\nTo create a new instance, you can use the `new` syntax:",
+    "slug": "v8",
+    "websiteUrl": "http://electronjs.org/docs/api/v8",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/v8.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "defaultDeserializer"
+  },
+  {
+    "name": "Worker Threads",
+    "description": "> The `worker_threads` module enables the use of threads that execute JavaScript in parallel.\n\nTo access it:\n\n```\nconst worker = require('worker_threads');\n```\n\nWorkers (threads) are useful for performing CPU-intensive JavaScript operations. They will not help much with I/O-intensive work. Node.js’s built-in asynchronous I/O operations are more efficient than Workers can be.\n\nUnlike `child_process` or `cluster`, `worker_threads` can share memory. They do so by transferring `ArrayBuffer` instances or sharing `SharedArrayBuffer` instances.\n\n```\nconst {\n  Worker, isMainThread, parentPort, workerData\n} = require('worker_threads');\n\nif (isMainThread) {\n  module.exports = function parseJSAsync(script) {\n    return new Promise((resolve, reject) => {\n      const worker = new Worker(__filename, {\n        workerData: script\n      });\n      worker.on('message', resolve);\n      worker.on('error', reject);\n      worker.on('exit', (code) => {\n        if (code !== 0)\n          reject(new Error(`Worker stopped with exit code ${code}`));\n      });\n    });\n  };\n} else {\n  const { parse } = require('some-js-parsing-library');\n  const script = workerData;\n  parentPort.postMessage(parse(script));\n}\n```\n\nThe above example spawns a Worker thread for each `parse()` call. In actual practice, use a pool of Workers instead for these kinds of tasks. Otherwise, the overhead of creating Workers would likely exceed their benefit.\n\nWhen implementing a worker pool, use the `AsyncResource` API to inform diagnostic tools (e.g. in order to provide asynchronous stack traces) about the correlation between tasks and their outcomes.\n\n### Static Properties\n\n\n\n### `worker.isMainThread`\n\nReturns `Boolean`\n\nIs `true` if this code is not running inside of a `Worker` thread.\n\n```\nconst { Worker, isMainThread } = require('worker_threads');\n\nif (isMainThread) {\n  // This re-loads the current file inside a Worker instance.\n  new Worker(__filename);\n} else {\n  console.log('Inside Worker!');\n  console.log(isMainThread);  // Prints 'false'.\n}\n```\n\n### `worker.parentPort`\n\nReturns `null|MessagePort`\n\nIf this thread was spawned as a `Worker`, this will be a `MessagePort` allowing communication with the parent thread. Messages sent using `parentPort.postMessage()` will be available in the parent thread using `worker.on('message')`, and messages sent from the parent thread using `worker.postMessage()` will be available in this thread using `parentPort.on('message')`.\n\n```\nconst { Worker, isMainThread, parentPort } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n  worker.once('message', (message) => {\n    console.log(message);  // Prints 'Hello, world!'.\n  });\n  worker.postMessage('Hello, world!');\n} else {\n  // When a message from the parent thread is received, send it back:\n  parentPort.once('message', (message) => {\n    parentPort.postMessage(message);\n  });\n}\n```\n\n### `worker.resourceLimits`\n\nReturns `Object`\n\n* `maxYoungGenerationSizeMb` Number\n* `maxOldGenerationSizeMb` Number\n* `codeRangeSizeMb` Number\n\nProvides the set of JS engine resource constraints inside this Worker thread. If the `resourceLimits` option was passed to the `Worker` constructor, this matches its values.\n\nIf this is used in the main thread, its value is an empty object.\n\n### `worker.SHARE_ENV`\n\nReturns `Symbol`\n\nA special value that can be passed as the `env` option of the `Worker` constructor, to indicate that the current thread and the Worker thread should share read and write access to the same set of environment variables.\n\n```\nconst { Worker, SHARE_ENV } = require('worker_threads');\nnew Worker('process.env.SET_IN_WORKER = \"foo\"', { eval: true, env: SHARE_ENV })\n  .on('exit', () => {\n    console.log(process.env.SET_IN_WORKER);  // Prints 'foo'.\n  });\n```\n\n### `worker.threadId`\n\nReturns `Integer`\n\nAn integer identifier for the current thread. On the corresponding worker object (if there is any), it is available as `worker.threadId`. This value is unique for each `Worker` instance inside a single process.\n\n### `worker.workerData`\n\nReturns `Any` - An arbitrary JavaScript value that contains a clone of the data passed to this thread’s `Worker` constructor. The data is cloned as if using `postMessage()`, according to the HTML structured clone algorithm.\n\n```\nconst { Worker, isMainThread, workerData } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename, { workerData: 'Hello, world!' });\n} else {\n  console.log(workerData);  // Prints 'Hello, world!'.\n}\n```",
+    "slug": "worker-threads",
+    "websiteUrl": "http://electronjs.org/docs/api/worker-threads",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/worker-threads.md",
+    "version": "1.0.0",
+    "type": "Module",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "methods": [
+      {
+        "name": "moveMessagePortToContext",
+        "signature": "(port, contextifiedSandbox)",
+        "description": "Transfer a `MessagePort` to a different `vm` Context. The original `port` object will be rendered unusable, and the returned `MessagePort` instance will take its place.\n\nThe returned `MessagePort` will be an object in the target context, and will inherit from its global `Object` class. Objects passed to the `port.onmessage()` listener will also be created in the target context and inherit from its global `Object` class.\n\nHowever, the created `MessagePort` will no longer inherit from `EventEmitter`, and only `port.onmessage()` can be used to receive events using it.",
+        "parameters": [
+          {
+            "name": "port",
+            "description": "The message port which will be transferred.",
+            "required": true,
+            "collection": false,
+            "type": "MessagePort"
+          },
+          {
+            "name": "contextifiedSandbox",
+            "description": "A contextified object as returned by the `vm.createContext()` method.",
+            "required": true,
+            "collection": false,
+            "type": "Object",
+            "properties": []
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": "MessagePort"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "receiveMessageOnPort",
+        "signature": "(port)",
+        "description": "Receive a single message from a given `MessagePort`. If no message is available, `undefined` is returned, otherwise an object with a single `message` property that contains the message payload, corresponding to the oldest message in the `MessagePort`’s queue.\n\nWhen this function is used, no `'message'` event will be emitted and the `onmessage` listener will not be invoked.",
+        "parameters": [
+          {
+            "name": "port",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "MessagePort"
+          }
+        ],
+        "returns": {
+          "collection": false,
+          "type": [
+            {
+              "collection": false,
+              "type": "Object",
+              "properties": []
+            },
+            {
+              "collection": false,
+              "type": "undefined"
+            }
+          ]
+        },
+        "additionalTags": []
+      }
+    ],
+    "properties": [],
+    "events": [],
+    "exportedClasses": []
+  },
+  {
+    "name": "MessageChannel",
+    "description": "> The `worker_threads` module enables the use of threads that execute JavaScript in parallel.\n\nTo access it:\n\n```\nconst worker = require('worker_threads');\n```\n\nWorkers (threads) are useful for performing CPU-intensive JavaScript operations. They will not help much with I/O-intensive work. Node.js’s built-in asynchronous I/O operations are more efficient than Workers can be.\n\nUnlike `child_process` or `cluster`, `worker_threads` can share memory. They do so by transferring `ArrayBuffer` instances or sharing `SharedArrayBuffer` instances.\n\n```\nconst {\n  Worker, isMainThread, parentPort, workerData\n} = require('worker_threads');\n\nif (isMainThread) {\n  module.exports = function parseJSAsync(script) {\n    return new Promise((resolve, reject) => {\n      const worker = new Worker(__filename, {\n        workerData: script\n      });\n      worker.on('message', resolve);\n      worker.on('error', reject);\n      worker.on('exit', (code) => {\n        if (code !== 0)\n          reject(new Error(`Worker stopped with exit code ${code}`));\n      });\n    });\n  };\n} else {\n  const { parse } = require('some-js-parsing-library');\n  const script = workerData;\n  parentPort.postMessage(parse(script));\n}\n```\n\nThe above example spawns a Worker thread for each `parse()` call. In actual practice, use a pool of Workers instead for these kinds of tasks. Otherwise, the overhead of creating Workers would likely exceed their benefit.\n\nWhen implementing a worker pool, use the `AsyncResource` API to inform diagnostic tools (e.g. in order to provide asynchronous stack traces) about the correlation between tasks and their outcomes.\n\n### Static Properties\n\n\n\n### `worker.isMainThread`\n\nReturns `Boolean`\n\nIs `true` if this code is not running inside of a `Worker` thread.\n\n```\nconst { Worker, isMainThread } = require('worker_threads');\n\nif (isMainThread) {\n  // This re-loads the current file inside a Worker instance.\n  new Worker(__filename);\n} else {\n  console.log('Inside Worker!');\n  console.log(isMainThread);  // Prints 'false'.\n}\n```\n\n### `worker.parentPort`\n\nReturns `null|MessagePort`\n\nIf this thread was spawned as a `Worker`, this will be a `MessagePort` allowing communication with the parent thread. Messages sent using `parentPort.postMessage()` will be available in the parent thread using `worker.on('message')`, and messages sent from the parent thread using `worker.postMessage()` will be available in this thread using `parentPort.on('message')`.\n\n```\nconst { Worker, isMainThread, parentPort } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n  worker.once('message', (message) => {\n    console.log(message);  // Prints 'Hello, world!'.\n  });\n  worker.postMessage('Hello, world!');\n} else {\n  // When a message from the parent thread is received, send it back:\n  parentPort.once('message', (message) => {\n    parentPort.postMessage(message);\n  });\n}\n```\n\n### `worker.resourceLimits`\n\nReturns `Object`\n\n* `maxYoungGenerationSizeMb` Number\n* `maxOldGenerationSizeMb` Number\n* `codeRangeSizeMb` Number\n\nProvides the set of JS engine resource constraints inside this Worker thread. If the `resourceLimits` option was passed to the `Worker` constructor, this matches its values.\n\nIf this is used in the main thread, its value is an empty object.\n\n### `worker.SHARE_ENV`\n\nReturns `Symbol`\n\nA special value that can be passed as the `env` option of the `Worker` constructor, to indicate that the current thread and the Worker thread should share read and write access to the same set of environment variables.\n\n```\nconst { Worker, SHARE_ENV } = require('worker_threads');\nnew Worker('process.env.SET_IN_WORKER = \"foo\"', { eval: true, env: SHARE_ENV })\n  .on('exit', () => {\n    console.log(process.env.SET_IN_WORKER);  // Prints 'foo'.\n  });\n```\n\n### `worker.threadId`\n\nReturns `Integer`\n\nAn integer identifier for the current thread. On the corresponding worker object (if there is any), it is available as `worker.threadId`. This value is unique for each `Worker` instance inside a single process.\n\n### `worker.workerData`\n\nReturns `Any` - An arbitrary JavaScript value that contains a clone of the data passed to this thread’s `Worker` constructor. The data is cloned as if using `postMessage()`, according to the HTML structured clone algorithm.\n\n```\nconst { Worker, isMainThread, workerData } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename, { workerData: 'Hello, world!' });\n} else {\n  console.log(workerData);  // Prints 'Hello, world!'.\n}\n```\n\n### Methods\n\n\n\n### `worker.moveMessagePortToContext(port, contextifiedSandbox)`\n\n* `port` MessagePort - The message port which will be transferred.\n* `contextifiedSandbox` Object - A contextified object as returned by the `vm.createContext()` method.\n\nReturns `MessagePort`\n\nTransfer a `MessagePort` to a different `vm` Context. The original `port` object will be rendered unusable, and the returned `MessagePort` instance will take its place.\n\nThe returned `MessagePort` will be an object in the target context, and will inherit from its global `Object` class. Objects passed to the `port.onmessage()` listener will also be created in the target context and inherit from its global `Object` class.\n\nHowever, the created `MessagePort` will no longer inherit from `EventEmitter`, and only `port.onmessage()` can be used to receive events using it.\n\n### `worker.receiveMessageOnPort(port)`\n\n* `port` MessagePort\n\nReturns `Object|undefined`\n\nReceive a single message from a given `MessagePort`. If no message is available, `undefined` is returned, otherwise an object with a single `message` property that contains the message payload, corresponding to the oldest message in the `MessagePort`’s queue.\n\n```\nconst { MessageChannel, receiveMessageOnPort } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\nport1.postMessage({ hello: 'world' });\n\nconsole.log(receiveMessageOnPort(port2));\n// Prints: { message: { hello: 'world' } }\nconsole.log(receiveMessageOnPort(port2));\n// Prints: undefined\n```\n\nWhen this function is used, no `'message'` event will be emitted and the `onmessage` listener will not be invoked.\n\n### Class: MessageChannel\n\n> Instances of the `worker.MessageChannel` class represent an asynchronous, two-way communications channel. The `MessageChannel` has no methods of its own. `new MessageChannel()` yields an object with `port1` and `port2` properties, which refer to linked `MessagePort` instances.\n\n```\nconst { MessageChannel } = require('worker_threads');\n\nconst { port1, port2 } = new MessageChannel();\nport1.on('message', (message) => console.log('received', message));\nport2.postMessage({ foo: 'bar' });\n// Prints: received { foo: 'bar' } from the `port1.on('message')` listener\n```\n\n### Class: MessagePort\n\n> Instances of the `worker.MessagePort` class represent one end of an asynchronous, two-way communications channel. It can be used to transfer structured data, memory regions and other `MessagePort`s between different `Worker`s.\n\n`MessagePort` is an EventEmitter.\n\nWith the exception of `MessagePort`s being `EventEmitter`s rather than `EventTarget`s, this implementation matches browser `MessagePort`s.\n\n### Instance Events\n\n\n\n### Event: 'close'\n\nThe `'close'` event is emitted once either side of the channel has been disconnected.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\n// Prints:\n//   foobar\n//   closed!\nport2.on('message', (message) => console.log(message));\nport2.on('close', () => console.log('closed!'));\n\nport1.postMessage('foobar');\nport1.close();\n```\n\n### Event: 'message'\n\nReturns:\n\n* `value` any - The transmitted value.\n\nThe `'message'` event is emitted for any incoming message, containing the cloned input of `port.postMessage()`.\n\nListeners on this event will receive a clone of the `value` parameter as passed to `postMessage()` and no further arguments.\n\n### Instance Methods\n\n\n\n### `port.close()`\n\nDisables further sending of messages on either side of the connection. This method can be called when no further communication will happen over this `MessagePort`.\n\nThe `'close'` event will be emitted on both `MessagePort` instances that are part of the channel.\n\n### `port.postMessage(value[, transferList])`\n\n* `value` Any\n* `transferList` Object[] (optional)\n\nSends a JavaScript value to the receiving side of this channel. `value` will be transferred in a way which is compatible with the HTML structured clone algorithm.\n\nIn particular, the significant differences to `JSON` are:\n\n* `value` may contain circular references.\n* `value` may contain instances of builtin JS types such as `RegExp`s, `BigInt`s, `Map`s, `Set`s, etc.\n* `value` may contain typed arrays, both using `ArrayBuffer`s and `SharedArrayBuffer`s.\n* `value` may contain `WebAssembly.Module` instances.\n* `value` may not contain native (C++-backed) objects other than `MessagePort`s.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\nport1.on('message', (message) => console.log(message));\n\nconst circularData = {};\ncircularData.foo = circularData;\n// Prints: { foo: [Circular] }\nport2.postMessage(circularData);\n```\n\n`transferList` may be a list of `ArrayBuffer` and `MessagePort` objects. After transferring, they will not be usable on the sending side of the channel anymore (even if they are not contained in `value`). Unlike with child processes, transferring handles such as network sockets is currently not supported.\n\nIf `value` contains `SharedArrayBuffer` instances, those will be accessible from either thread. They cannot be listed in `transferList`.\n\n`value` may still contain `ArrayBuffer` instances that are not in `transferList`; in that case, the underlying memory is copied rather than moved.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\nport1.on('message', (message) => console.log(message));\n\nconst uint8Array = new Uint8Array([ 1, 2, 3, 4 ]);\n// This posts a copy of `uint8Array`:\nport2.postMessage(uint8Array);\n// This does not copy data, but renders `uint8Array` unusable:\nport2.postMessage(uint8Array, [ uint8Array.buffer ]);\n\n// The memory for the `sharedUint8Array` will be accessible from both the\n// original and the copy received by `.on('message')`:\nconst sharedUint8Array = new Uint8Array(new SharedArrayBuffer(4));\nport2.postMessage(sharedUint8Array);\n\n// This transfers a freshly created message port to the receiver.\n// This can be used, for example, to create communication channels between\n// multiple `Worker` threads that are children of the same parent thread.\nconst otherChannel = new MessageChannel();\nport2.postMessage({ port: otherChannel.port1 }, [ otherChannel.port1 ]);\n```\n\nBecause the object cloning uses the structured clone algorithm, non-enumerable properties, property accessors, and object prototypes are not preserved. In particular, `Buffer` objects will be read as plain `Uint8Array`s on the receiving side.\n\nThe message object will be cloned immediately, and can be modified after posting without having side effects.\n\nFor more information on the serialization and deserialization mechanisms behind this API, see the serialization API of the `v8` module.\n\n### `port.ref()`\n\nOpposite of `unref()`. Calling `ref()` on a previously `unref()`ed port will *not* let the program exit if it's the only active handle left (the default behavior). If the port is `ref()`ed, calling `ref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.\n\n### `port.start()`\n\nStarts receiving messages on this `MessagePort`. When using this port as an event emitter, this will be called automatically once `'message'` listeners are attached.\n\nThis method exists for parity with the Web `MessagePort` API. In Node.js, it is only useful for ignoring messages when no event listener is present. Node.js also diverges in its handling of `.onmessage`. Setting it will automatically call `.start()`, but unsetting it will let messages queue up until a new handler is set or the port is discarded.\n\n### `port.unref()`\n\nCalling `unref()` on a port will allow the thread to exit if this is the only active handle in the event system. If the port is already `unref()`ed calling `unref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.\n\n### Class: Worker\n\n> The `Worker` class represents an independent JavaScript execution thread. Most Node.js APIs are available inside of it.\n\n`WorkerPort` is an EventEmitter.\n\nNotable differences inside a Worker environment are:\n\n* The `process.stdin`, `process.stdout` and `process.stderr` may be redirected by the parent thread.\n* The `require('worker_threads').isMainThread` property is set to `false`.\n* The `require('worker_threads').parentPort` message port is available.\n* `process.exit()` does not stop the whole program, just the single thread, and `process.abort()` is not available.\n* `process.chdir()` and `process` methods that set group or user ids are not available.\n* `process.env` is a copy of the parent thread's environment variables, unless otherwise specified. Changes to one copy will not be visible in other threads, and will not be visible to native add-ons (unless `worker.SHARE_ENV` has been passed as the `env` option to the `Worker` constructor).\n* `process.title` cannot be modified.\n* Signals will not be delivered through `process.on('...')`.\n* Execution may stop at any point as a result of `worker.terminate()` being invoked.\n* IPC channels from parent processes are not accessible.\n* The `trace_events` module is not supported.\n* Native add-ons can only be loaded from multiple threads if they fulfill certain conditions.\n\nCreating `Worker` instances inside of other `Worker`s is possible.\n\nLike Web Workers and the `cluster` module, two-way communication can be achieved through inter-thread message passing. Internally, a `Worker` has a built-in pair of `MessagePort`s that are already associated with each other when the `Worker` is created. While the `MessagePort` object on the parent side is not directly exposed, its functionalities are exposed through `worker.postMessage()` and the `worker.on('message')` event on the `Worker` object for the parent thread.\n\nTo create custom messaging channels (which is encouraged over using the default sglobal channel because it facilitates separation of concerns), users can create a `MessageChannel` object on either thread and pass one of the `MessagePort`s on that `MessageChannel` to the other thread through a pre-existing channel, such as the global one.\n\nSee `port.postMessage()` for more information on how messages are passed, and what kind of JavaScript values can be successfully transported through the thread barrier.",
+    "slug": "worker-threads",
+    "websiteUrl": "http://electronjs.org/docs/api/worker-threads",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/worker-threads.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [],
+    "instanceProperties": [],
+    "instanceEvents": [],
+    "instanceName": "messageChannel"
+  },
+  {
+    "name": "MessagePort",
+    "description": "> The `worker_threads` module enables the use of threads that execute JavaScript in parallel.\n\nTo access it:\n\n```\nconst worker = require('worker_threads');\n```\n\nWorkers (threads) are useful for performing CPU-intensive JavaScript operations. They will not help much with I/O-intensive work. Node.js’s built-in asynchronous I/O operations are more efficient than Workers can be.\n\nUnlike `child_process` or `cluster`, `worker_threads` can share memory. They do so by transferring `ArrayBuffer` instances or sharing `SharedArrayBuffer` instances.\n\n```\nconst {\n  Worker, isMainThread, parentPort, workerData\n} = require('worker_threads');\n\nif (isMainThread) {\n  module.exports = function parseJSAsync(script) {\n    return new Promise((resolve, reject) => {\n      const worker = new Worker(__filename, {\n        workerData: script\n      });\n      worker.on('message', resolve);\n      worker.on('error', reject);\n      worker.on('exit', (code) => {\n        if (code !== 0)\n          reject(new Error(`Worker stopped with exit code ${code}`));\n      });\n    });\n  };\n} else {\n  const { parse } = require('some-js-parsing-library');\n  const script = workerData;\n  parentPort.postMessage(parse(script));\n}\n```\n\nThe above example spawns a Worker thread for each `parse()` call. In actual practice, use a pool of Workers instead for these kinds of tasks. Otherwise, the overhead of creating Workers would likely exceed their benefit.\n\nWhen implementing a worker pool, use the `AsyncResource` API to inform diagnostic tools (e.g. in order to provide asynchronous stack traces) about the correlation between tasks and their outcomes.\n\n### Static Properties\n\n\n\n### `worker.isMainThread`\n\nReturns `Boolean`\n\nIs `true` if this code is not running inside of a `Worker` thread.\n\n```\nconst { Worker, isMainThread } = require('worker_threads');\n\nif (isMainThread) {\n  // This re-loads the current file inside a Worker instance.\n  new Worker(__filename);\n} else {\n  console.log('Inside Worker!');\n  console.log(isMainThread);  // Prints 'false'.\n}\n```\n\n### `worker.parentPort`\n\nReturns `null|MessagePort`\n\nIf this thread was spawned as a `Worker`, this will be a `MessagePort` allowing communication with the parent thread. Messages sent using `parentPort.postMessage()` will be available in the parent thread using `worker.on('message')`, and messages sent from the parent thread using `worker.postMessage()` will be available in this thread using `parentPort.on('message')`.\n\n```\nconst { Worker, isMainThread, parentPort } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n  worker.once('message', (message) => {\n    console.log(message);  // Prints 'Hello, world!'.\n  });\n  worker.postMessage('Hello, world!');\n} else {\n  // When a message from the parent thread is received, send it back:\n  parentPort.once('message', (message) => {\n    parentPort.postMessage(message);\n  });\n}\n```\n\n### `worker.resourceLimits`\n\nReturns `Object`\n\n* `maxYoungGenerationSizeMb` Number\n* `maxOldGenerationSizeMb` Number\n* `codeRangeSizeMb` Number\n\nProvides the set of JS engine resource constraints inside this Worker thread. If the `resourceLimits` option was passed to the `Worker` constructor, this matches its values.\n\nIf this is used in the main thread, its value is an empty object.\n\n### `worker.SHARE_ENV`\n\nReturns `Symbol`\n\nA special value that can be passed as the `env` option of the `Worker` constructor, to indicate that the current thread and the Worker thread should share read and write access to the same set of environment variables.\n\n```\nconst { Worker, SHARE_ENV } = require('worker_threads');\nnew Worker('process.env.SET_IN_WORKER = \"foo\"', { eval: true, env: SHARE_ENV })\n  .on('exit', () => {\n    console.log(process.env.SET_IN_WORKER);  // Prints 'foo'.\n  });\n```\n\n### `worker.threadId`\n\nReturns `Integer`\n\nAn integer identifier for the current thread. On the corresponding worker object (if there is any), it is available as `worker.threadId`. This value is unique for each `Worker` instance inside a single process.\n\n### `worker.workerData`\n\nReturns `Any` - An arbitrary JavaScript value that contains a clone of the data passed to this thread’s `Worker` constructor. The data is cloned as if using `postMessage()`, according to the HTML structured clone algorithm.\n\n```\nconst { Worker, isMainThread, workerData } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename, { workerData: 'Hello, world!' });\n} else {\n  console.log(workerData);  // Prints 'Hello, world!'.\n}\n```\n\n### Methods\n\n\n\n### `worker.moveMessagePortToContext(port, contextifiedSandbox)`\n\n* `port` MessagePort - The message port which will be transferred.\n* `contextifiedSandbox` Object - A contextified object as returned by the `vm.createContext()` method.\n\nReturns `MessagePort`\n\nTransfer a `MessagePort` to a different `vm` Context. The original `port` object will be rendered unusable, and the returned `MessagePort` instance will take its place.\n\nThe returned `MessagePort` will be an object in the target context, and will inherit from its global `Object` class. Objects passed to the `port.onmessage()` listener will also be created in the target context and inherit from its global `Object` class.\n\nHowever, the created `MessagePort` will no longer inherit from `EventEmitter`, and only `port.onmessage()` can be used to receive events using it.\n\n### `worker.receiveMessageOnPort(port)`\n\n* `port` MessagePort\n\nReturns `Object|undefined`\n\nReceive a single message from a given `MessagePort`. If no message is available, `undefined` is returned, otherwise an object with a single `message` property that contains the message payload, corresponding to the oldest message in the `MessagePort`’s queue.\n\n```\nconst { MessageChannel, receiveMessageOnPort } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\nport1.postMessage({ hello: 'world' });\n\nconsole.log(receiveMessageOnPort(port2));\n// Prints: { message: { hello: 'world' } }\nconsole.log(receiveMessageOnPort(port2));\n// Prints: undefined\n```\n\nWhen this function is used, no `'message'` event will be emitted and the `onmessage` listener will not be invoked.\n\n### Class: MessageChannel\n\n> Instances of the `worker.MessageChannel` class represent an asynchronous, two-way communications channel. The `MessageChannel` has no methods of its own. `new MessageChannel()` yields an object with `port1` and `port2` properties, which refer to linked `MessagePort` instances.\n\n```\nconst { MessageChannel } = require('worker_threads');\n\nconst { port1, port2 } = new MessageChannel();\nport1.on('message', (message) => console.log('received', message));\nport2.postMessage({ foo: 'bar' });\n// Prints: received { foo: 'bar' } from the `port1.on('message')` listener\n```\n\n### Class: MessagePort\n\n> Instances of the `worker.MessagePort` class represent one end of an asynchronous, two-way communications channel. It can be used to transfer structured data, memory regions and other `MessagePort`s between different `Worker`s.\n\n`MessagePort` is an EventEmitter.\n\nWith the exception of `MessagePort`s being `EventEmitter`s rather than `EventTarget`s, this implementation matches browser `MessagePort`s.\n\n### Instance Events\n\n\n\n### Event: 'close'\n\nThe `'close'` event is emitted once either side of the channel has been disconnected.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\n// Prints:\n//   foobar\n//   closed!\nport2.on('message', (message) => console.log(message));\nport2.on('close', () => console.log('closed!'));\n\nport1.postMessage('foobar');\nport1.close();\n```\n\n### Event: 'message'\n\nReturns:\n\n* `value` any - The transmitted value.\n\nThe `'message'` event is emitted for any incoming message, containing the cloned input of `port.postMessage()`.\n\nListeners on this event will receive a clone of the `value` parameter as passed to `postMessage()` and no further arguments.\n\n### Instance Methods\n\n\n\n### `port.close()`\n\nDisables further sending of messages on either side of the connection. This method can be called when no further communication will happen over this `MessagePort`.\n\nThe `'close'` event will be emitted on both `MessagePort` instances that are part of the channel.\n\n### `port.postMessage(value[, transferList])`\n\n* `value` Any\n* `transferList` Object[] (optional)\n\nSends a JavaScript value to the receiving side of this channel. `value` will be transferred in a way which is compatible with the HTML structured clone algorithm.\n\nIn particular, the significant differences to `JSON` are:\n\n* `value` may contain circular references.\n* `value` may contain instances of builtin JS types such as `RegExp`s, `BigInt`s, `Map`s, `Set`s, etc.\n* `value` may contain typed arrays, both using `ArrayBuffer`s and `SharedArrayBuffer`s.\n* `value` may contain `WebAssembly.Module` instances.\n* `value` may not contain native (C++-backed) objects other than `MessagePort`s.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\nport1.on('message', (message) => console.log(message));\n\nconst circularData = {};\ncircularData.foo = circularData;\n// Prints: { foo: [Circular] }\nport2.postMessage(circularData);\n```\n\n`transferList` may be a list of `ArrayBuffer` and `MessagePort` objects. After transferring, they will not be usable on the sending side of the channel anymore (even if they are not contained in `value`). Unlike with child processes, transferring handles such as network sockets is currently not supported.\n\nIf `value` contains `SharedArrayBuffer` instances, those will be accessible from either thread. They cannot be listed in `transferList`.\n\n`value` may still contain `ArrayBuffer` instances that are not in `transferList`; in that case, the underlying memory is copied rather than moved.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\nport1.on('message', (message) => console.log(message));\n\nconst uint8Array = new Uint8Array([ 1, 2, 3, 4 ]);\n// This posts a copy of `uint8Array`:\nport2.postMessage(uint8Array);\n// This does not copy data, but renders `uint8Array` unusable:\nport2.postMessage(uint8Array, [ uint8Array.buffer ]);\n\n// The memory for the `sharedUint8Array` will be accessible from both the\n// original and the copy received by `.on('message')`:\nconst sharedUint8Array = new Uint8Array(new SharedArrayBuffer(4));\nport2.postMessage(sharedUint8Array);\n\n// This transfers a freshly created message port to the receiver.\n// This can be used, for example, to create communication channels between\n// multiple `Worker` threads that are children of the same parent thread.\nconst otherChannel = new MessageChannel();\nport2.postMessage({ port: otherChannel.port1 }, [ otherChannel.port1 ]);\n```\n\nBecause the object cloning uses the structured clone algorithm, non-enumerable properties, property accessors, and object prototypes are not preserved. In particular, `Buffer` objects will be read as plain `Uint8Array`s on the receiving side.\n\nThe message object will be cloned immediately, and can be modified after posting without having side effects.\n\nFor more information on the serialization and deserialization mechanisms behind this API, see the serialization API of the `v8` module.\n\n### `port.ref()`\n\nOpposite of `unref()`. Calling `ref()` on a previously `unref()`ed port will *not* let the program exit if it's the only active handle left (the default behavior). If the port is `ref()`ed, calling `ref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.\n\n### `port.start()`\n\nStarts receiving messages on this `MessagePort`. When using this port as an event emitter, this will be called automatically once `'message'` listeners are attached.\n\nThis method exists for parity with the Web `MessagePort` API. In Node.js, it is only useful for ignoring messages when no event listener is present. Node.js also diverges in its handling of `.onmessage`. Setting it will automatically call `.start()`, but unsetting it will let messages queue up until a new handler is set or the port is discarded.\n\n### `port.unref()`\n\nCalling `unref()` on a port will allow the thread to exit if this is the only active handle in the event system. If the port is already `unref()`ed calling `unref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.\n\n### Class: Worker\n\n> The `Worker` class represents an independent JavaScript execution thread. Most Node.js APIs are available inside of it.\n\n`WorkerPort` is an EventEmitter.\n\nNotable differences inside a Worker environment are:\n\n* The `process.stdin`, `process.stdout` and `process.stderr` may be redirected by the parent thread.\n* The `require('worker_threads').isMainThread` property is set to `false`.\n* The `require('worker_threads').parentPort` message port is available.\n* `process.exit()` does not stop the whole program, just the single thread, and `process.abort()` is not available.\n* `process.chdir()` and `process` methods that set group or user ids are not available.\n* `process.env` is a copy of the parent thread's environment variables, unless otherwise specified. Changes to one copy will not be visible in other threads, and will not be visible to native add-ons (unless `worker.SHARE_ENV` has been passed as the `env` option to the `Worker` constructor).\n* `process.title` cannot be modified.\n* Signals will not be delivered through `process.on('...')`.\n* Execution may stop at any point as a result of `worker.terminate()` being invoked.\n* IPC channels from parent processes are not accessible.\n* The `trace_events` module is not supported.\n* Native add-ons can only be loaded from multiple threads if they fulfill certain conditions.\n\nCreating `Worker` instances inside of other `Worker`s is possible.\n\nLike Web Workers and the `cluster` module, two-way communication can be achieved through inter-thread message passing. Internally, a `Worker` has a built-in pair of `MessagePort`s that are already associated with each other when the `Worker` is created. While the `MessagePort` object on the parent side is not directly exposed, its functionalities are exposed through `worker.postMessage()` and the `worker.on('message')` event on the `Worker` object for the parent thread.\n\nTo create custom messaging channels (which is encouraged over using the default sglobal channel because it facilitates separation of concerns), users can create a `MessageChannel` object on either thread and pass one of the `MessagePort`s on that `MessageChannel` to the other thread through a pre-existing channel, such as the global one.\n\nSee `port.postMessage()` for more information on how messages are passed, and what kind of JavaScript values can be successfully transported through the thread barrier.",
+    "slug": "worker-threads",
+    "websiteUrl": "http://electronjs.org/docs/api/worker-threads",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/worker-threads.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": null,
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [
+      {
+        "name": "close",
+        "signature": "()",
+        "description": "Disables further sending of messages on either side of the connection. This method can be called when no further communication will happen over this `MessagePort`.\n\nThe `'close'` event will be emitted on both `MessagePort` instances that are part of the channel.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "postMessage",
+        "signature": "(value[, transferList])",
+        "description": "Sends a JavaScript value to the receiving side of this channel. `value` will be transferred in a way which is compatible with the HTML structured clone algorithm.\n\nIn particular, the significant differences to `JSON` are:\n\n* `value` may contain circular references.\n* `value` may contain instances of builtin JS types such as `RegExp`s, `BigInt`s, `Map`s, `Set`s, etc.\n* `value` may contain typed arrays, both using `ArrayBuffer`s and `SharedArrayBuffer`s.\n* `value` may contain `WebAssembly.Module` instances.\n* `value` may not contain native (C++-backed) objects other than `MessagePort`s.\n\n`transferList` may be a list of `ArrayBuffer` and `MessagePort` objects. After transferring, they will not be usable on the sending side of the channel anymore (even if they are not contained in `value`). Unlike with child processes, transferring handles such as network sockets is currently not supported.\n\nIf `value` contains `SharedArrayBuffer` instances, those will be accessible from either thread. They cannot be listed in `transferList`.\n\n`value` may still contain `ArrayBuffer` instances that are not in `transferList`; in that case, the underlying memory is copied rather than moved.\n\nBecause the object cloning uses the structured clone algorithm, non-enumerable properties, property accessors, and object prototypes are not preserved. In particular, `Buffer` objects will be read as plain `Uint8Array`s on the receiving side.\n\nThe message object will be cloned immediately, and can be modified after posting without having side effects.\n\nFor more information on the serialization and deserialization mechanisms behind this API, see the serialization API of the `v8` module.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "Any"
+          },
+          {
+            "name": "transferList",
+            "description": "",
+            "required": false,
+            "collection": true,
+            "type": "Object",
+            "properties": []
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "ref",
+        "signature": "()",
+        "description": "Opposite of `unref()`. Calling `ref()` on a previously `unref()`ed port will *not* let the program exit if it's the only active handle left (the default behavior). If the port is `ref()`ed, calling `ref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "start",
+        "signature": "()",
+        "description": "Starts receiving messages on this `MessagePort`. When using this port as an event emitter, this will be called automatically once `'message'` listeners are attached.\n\nThis method exists for parity with the Web `MessagePort` API. In Node.js, it is only useful for ignoring messages when no event listener is present. Node.js also diverges in its handling of `.onmessage`. Setting it will automatically call `.start()`, but unsetting it will let messages queue up until a new handler is set or the port is discarded.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "unref",
+        "signature": "()",
+        "description": "Calling `unref()` on a port will allow the thread to exit if this is the only active handle in the event system. If the port is already `unref()`ed calling `unref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "instanceProperties": [],
+    "instanceEvents": [
+      {
+        "name": "close",
+        "description": "The `'close'` event is emitted once either side of the channel has been disconnected.",
+        "parameters": [],
+        "additionalTags": []
+      },
+      {
+        "name": "message",
+        "description": "The `'message'` event is emitted for any incoming message, containing the cloned input of `port.postMessage()`.\n\nListeners on this event will receive a clone of the `value` parameter as passed to `postMessage()` and no further arguments.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "The transmitted value.",
+            "collection": false,
+            "type": "any",
+            "required": true
+          }
+        ],
+        "additionalTags": []
+      }
+    ],
+    "instanceName": "messagePort"
+  },
+  {
+    "name": "Worker",
+    "description": "> The `worker_threads` module enables the use of threads that execute JavaScript in parallel.\n\nTo access it:\n\n```\nconst worker = require('worker_threads');\n```\n\nWorkers (threads) are useful for performing CPU-intensive JavaScript operations. They will not help much with I/O-intensive work. Node.js’s built-in asynchronous I/O operations are more efficient than Workers can be.\n\nUnlike `child_process` or `cluster`, `worker_threads` can share memory. They do so by transferring `ArrayBuffer` instances or sharing `SharedArrayBuffer` instances.\n\n```\nconst {\n  Worker, isMainThread, parentPort, workerData\n} = require('worker_threads');\n\nif (isMainThread) {\n  module.exports = function parseJSAsync(script) {\n    return new Promise((resolve, reject) => {\n      const worker = new Worker(__filename, {\n        workerData: script\n      });\n      worker.on('message', resolve);\n      worker.on('error', reject);\n      worker.on('exit', (code) => {\n        if (code !== 0)\n          reject(new Error(`Worker stopped with exit code ${code}`));\n      });\n    });\n  };\n} else {\n  const { parse } = require('some-js-parsing-library');\n  const script = workerData;\n  parentPort.postMessage(parse(script));\n}\n```\n\nThe above example spawns a Worker thread for each `parse()` call. In actual practice, use a pool of Workers instead for these kinds of tasks. Otherwise, the overhead of creating Workers would likely exceed their benefit.\n\nWhen implementing a worker pool, use the `AsyncResource` API to inform diagnostic tools (e.g. in order to provide asynchronous stack traces) about the correlation between tasks and their outcomes.\n\n### Static Properties\n\n\n\n### `worker.isMainThread`\n\nReturns `Boolean`\n\nIs `true` if this code is not running inside of a `Worker` thread.\n\n```\nconst { Worker, isMainThread } = require('worker_threads');\n\nif (isMainThread) {\n  // This re-loads the current file inside a Worker instance.\n  new Worker(__filename);\n} else {\n  console.log('Inside Worker!');\n  console.log(isMainThread);  // Prints 'false'.\n}\n```\n\n### `worker.parentPort`\n\nReturns `null|MessagePort`\n\nIf this thread was spawned as a `Worker`, this will be a `MessagePort` allowing communication with the parent thread. Messages sent using `parentPort.postMessage()` will be available in the parent thread using `worker.on('message')`, and messages sent from the parent thread using `worker.postMessage()` will be available in this thread using `parentPort.on('message')`.\n\n```\nconst { Worker, isMainThread, parentPort } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename);\n  worker.once('message', (message) => {\n    console.log(message);  // Prints 'Hello, world!'.\n  });\n  worker.postMessage('Hello, world!');\n} else {\n  // When a message from the parent thread is received, send it back:\n  parentPort.once('message', (message) => {\n    parentPort.postMessage(message);\n  });\n}\n```\n\n### `worker.resourceLimits`\n\nReturns `Object`\n\n* `maxYoungGenerationSizeMb` Number\n* `maxOldGenerationSizeMb` Number\n* `codeRangeSizeMb` Number\n\nProvides the set of JS engine resource constraints inside this Worker thread. If the `resourceLimits` option was passed to the `Worker` constructor, this matches its values.\n\nIf this is used in the main thread, its value is an empty object.\n\n### `worker.SHARE_ENV`\n\nReturns `Symbol`\n\nA special value that can be passed as the `env` option of the `Worker` constructor, to indicate that the current thread and the Worker thread should share read and write access to the same set of environment variables.\n\n```\nconst { Worker, SHARE_ENV } = require('worker_threads');\nnew Worker('process.env.SET_IN_WORKER = \"foo\"', { eval: true, env: SHARE_ENV })\n  .on('exit', () => {\n    console.log(process.env.SET_IN_WORKER);  // Prints 'foo'.\n  });\n```\n\n### `worker.threadId`\n\nReturns `Integer`\n\nAn integer identifier for the current thread. On the corresponding worker object (if there is any), it is available as `worker.threadId`. This value is unique for each `Worker` instance inside a single process.\n\n### `worker.workerData`\n\nReturns `Any` - An arbitrary JavaScript value that contains a clone of the data passed to this thread’s `Worker` constructor. The data is cloned as if using `postMessage()`, according to the HTML structured clone algorithm.\n\n```\nconst { Worker, isMainThread, workerData } = require('worker_threads');\n\nif (isMainThread) {\n  const worker = new Worker(__filename, { workerData: 'Hello, world!' });\n} else {\n  console.log(workerData);  // Prints 'Hello, world!'.\n}\n```\n\n### Methods\n\n\n\n### `worker.moveMessagePortToContext(port, contextifiedSandbox)`\n\n* `port` MessagePort - The message port which will be transferred.\n* `contextifiedSandbox` Object - A contextified object as returned by the `vm.createContext()` method.\n\nReturns `MessagePort`\n\nTransfer a `MessagePort` to a different `vm` Context. The original `port` object will be rendered unusable, and the returned `MessagePort` instance will take its place.\n\nThe returned `MessagePort` will be an object in the target context, and will inherit from its global `Object` class. Objects passed to the `port.onmessage()` listener will also be created in the target context and inherit from its global `Object` class.\n\nHowever, the created `MessagePort` will no longer inherit from `EventEmitter`, and only `port.onmessage()` can be used to receive events using it.\n\n### `worker.receiveMessageOnPort(port)`\n\n* `port` MessagePort\n\nReturns `Object|undefined`\n\nReceive a single message from a given `MessagePort`. If no message is available, `undefined` is returned, otherwise an object with a single `message` property that contains the message payload, corresponding to the oldest message in the `MessagePort`’s queue.\n\n```\nconst { MessageChannel, receiveMessageOnPort } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\nport1.postMessage({ hello: 'world' });\n\nconsole.log(receiveMessageOnPort(port2));\n// Prints: { message: { hello: 'world' } }\nconsole.log(receiveMessageOnPort(port2));\n// Prints: undefined\n```\n\nWhen this function is used, no `'message'` event will be emitted and the `onmessage` listener will not be invoked.\n\n### Class: MessageChannel\n\n> Instances of the `worker.MessageChannel` class represent an asynchronous, two-way communications channel. The `MessageChannel` has no methods of its own. `new MessageChannel()` yields an object with `port1` and `port2` properties, which refer to linked `MessagePort` instances.\n\n```\nconst { MessageChannel } = require('worker_threads');\n\nconst { port1, port2 } = new MessageChannel();\nport1.on('message', (message) => console.log('received', message));\nport2.postMessage({ foo: 'bar' });\n// Prints: received { foo: 'bar' } from the `port1.on('message')` listener\n```\n\n### Class: MessagePort\n\n> Instances of the `worker.MessagePort` class represent one end of an asynchronous, two-way communications channel. It can be used to transfer structured data, memory regions and other `MessagePort`s between different `Worker`s.\n\n`MessagePort` is an EventEmitter.\n\nWith the exception of `MessagePort`s being `EventEmitter`s rather than `EventTarget`s, this implementation matches browser `MessagePort`s.\n\n### Instance Events\n\n\n\n### Event: 'close'\n\nThe `'close'` event is emitted once either side of the channel has been disconnected.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\n// Prints:\n//   foobar\n//   closed!\nport2.on('message', (message) => console.log(message));\nport2.on('close', () => console.log('closed!'));\n\nport1.postMessage('foobar');\nport1.close();\n```\n\n### Event: 'message'\n\nReturns:\n\n* `value` any - The transmitted value.\n\nThe `'message'` event is emitted for any incoming message, containing the cloned input of `port.postMessage()`.\n\nListeners on this event will receive a clone of the `value` parameter as passed to `postMessage()` and no further arguments.\n\n### Instance Methods\n\n\n\n### `port.close()`\n\nDisables further sending of messages on either side of the connection. This method can be called when no further communication will happen over this `MessagePort`.\n\nThe `'close'` event will be emitted on both `MessagePort` instances that are part of the channel.\n\n### `port.postMessage(value[, transferList])`\n\n* `value` Any\n* `transferList` Object[] (optional)\n\nSends a JavaScript value to the receiving side of this channel. `value` will be transferred in a way which is compatible with the HTML structured clone algorithm.\n\nIn particular, the significant differences to `JSON` are:\n\n* `value` may contain circular references.\n* `value` may contain instances of builtin JS types such as `RegExp`s, `BigInt`s, `Map`s, `Set`s, etc.\n* `value` may contain typed arrays, both using `ArrayBuffer`s and `SharedArrayBuffer`s.\n* `value` may contain `WebAssembly.Module` instances.\n* `value` may not contain native (C++-backed) objects other than `MessagePort`s.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\nport1.on('message', (message) => console.log(message));\n\nconst circularData = {};\ncircularData.foo = circularData;\n// Prints: { foo: [Circular] }\nport2.postMessage(circularData);\n```\n\n`transferList` may be a list of `ArrayBuffer` and `MessagePort` objects. After transferring, they will not be usable on the sending side of the channel anymore (even if they are not contained in `value`). Unlike with child processes, transferring handles such as network sockets is currently not supported.\n\nIf `value` contains `SharedArrayBuffer` instances, those will be accessible from either thread. They cannot be listed in `transferList`.\n\n`value` may still contain `ArrayBuffer` instances that are not in `transferList`; in that case, the underlying memory is copied rather than moved.\n\n```\nconst { MessageChannel } = require('worker_threads');\nconst { port1, port2 } = new MessageChannel();\n\nport1.on('message', (message) => console.log(message));\n\nconst uint8Array = new Uint8Array([ 1, 2, 3, 4 ]);\n// This posts a copy of `uint8Array`:\nport2.postMessage(uint8Array);\n// This does not copy data, but renders `uint8Array` unusable:\nport2.postMessage(uint8Array, [ uint8Array.buffer ]);\n\n// The memory for the `sharedUint8Array` will be accessible from both the\n// original and the copy received by `.on('message')`:\nconst sharedUint8Array = new Uint8Array(new SharedArrayBuffer(4));\nport2.postMessage(sharedUint8Array);\n\n// This transfers a freshly created message port to the receiver.\n// This can be used, for example, to create communication channels between\n// multiple `Worker` threads that are children of the same parent thread.\nconst otherChannel = new MessageChannel();\nport2.postMessage({ port: otherChannel.port1 }, [ otherChannel.port1 ]);\n```\n\nBecause the object cloning uses the structured clone algorithm, non-enumerable properties, property accessors, and object prototypes are not preserved. In particular, `Buffer` objects will be read as plain `Uint8Array`s on the receiving side.\n\nThe message object will be cloned immediately, and can be modified after posting without having side effects.\n\nFor more information on the serialization and deserialization mechanisms behind this API, see the serialization API of the `v8` module.\n\n### `port.ref()`\n\nOpposite of `unref()`. Calling `ref()` on a previously `unref()`ed port will *not* let the program exit if it's the only active handle left (the default behavior). If the port is `ref()`ed, calling `ref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.\n\n### `port.start()`\n\nStarts receiving messages on this `MessagePort`. When using this port as an event emitter, this will be called automatically once `'message'` listeners are attached.\n\nThis method exists for parity with the Web `MessagePort` API. In Node.js, it is only useful for ignoring messages when no event listener is present. Node.js also diverges in its handling of `.onmessage`. Setting it will automatically call `.start()`, but unsetting it will let messages queue up until a new handler is set or the port is discarded.\n\n### `port.unref()`\n\nCalling `unref()` on a port will allow the thread to exit if this is the only active handle in the event system. If the port is already `unref()`ed calling `unref()` again will have no effect.\n\nIf listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.\n\n### Class: Worker\n\n> The `Worker` class represents an independent JavaScript execution thread. Most Node.js APIs are available inside of it.\n\n`WorkerPort` is an EventEmitter.\n\nNotable differences inside a Worker environment are:\n\n* The `process.stdin`, `process.stdout` and `process.stderr` may be redirected by the parent thread.\n* The `require('worker_threads').isMainThread` property is set to `false`.\n* The `require('worker_threads').parentPort` message port is available.\n* `process.exit()` does not stop the whole program, just the single thread, and `process.abort()` is not available.\n* `process.chdir()` and `process` methods that set group or user ids are not available.\n* `process.env` is a copy of the parent thread's environment variables, unless otherwise specified. Changes to one copy will not be visible in other threads, and will not be visible to native add-ons (unless `worker.SHARE_ENV` has been passed as the `env` option to the `Worker` constructor).\n* `process.title` cannot be modified.\n* Signals will not be delivered through `process.on('...')`.\n* Execution may stop at any point as a result of `worker.terminate()` being invoked.\n* IPC channels from parent processes are not accessible.\n* The `trace_events` module is not supported.\n* Native add-ons can only be loaded from multiple threads if they fulfill certain conditions.\n\nCreating `Worker` instances inside of other `Worker`s is possible.\n\nLike Web Workers and the `cluster` module, two-way communication can be achieved through inter-thread message passing. Internally, a `Worker` has a built-in pair of `MessagePort`s that are already associated with each other when the `Worker` is created. While the `MessagePort` object on the parent side is not directly exposed, its functionalities are exposed through `worker.postMessage()` and the `worker.on('message')` event on the `Worker` object for the parent thread.\n\nTo create custom messaging channels (which is encouraged over using the default sglobal channel because it facilitates separation of concerns), users can create a `MessageChannel` object on either thread and pass one of the `MessagePort`s on that `MessageChannel` to the other thread through a pre-existing channel, such as the global one.\n\nSee `port.postMessage()` for more information on how messages are passed, and what kind of JavaScript values can be successfully transported through the thread barrier.",
+    "slug": "worker-threads",
+    "websiteUrl": "http://electronjs.org/docs/api/worker-threads",
+    "repoUrl": "https://github.com/electron/electron/blob/1.0.0/docs/api/docs/api/worker-threads.md",
+    "version": "1.0.0",
+    "type": "Class",
+    "process": {
+      "main": true,
+      "renderer": true
+    },
+    "constructorMethod": {
+      "signature": "(filename[, options])",
+      "parameters": [
+        {
+          "name": "filename",
+          "description": "The path to the Worker’s main script. Must be either an absolute path or a relative path (i.e. relative to the current working directory) starting with `./` or `../`. If `options.eval` is `true`, this is a string containing JavaScript code rather than a path.",
+          "required": true,
+          "collection": false,
+          "type": "String",
+          "possibleValues": null
+        },
+        {
+          "name": "options",
+          "description": "",
+          "required": false,
+          "collection": false,
+          "type": "Object",
+          "properties": [
+            {
+              "name": "argv",
+              "description": "List of arguments which would be stringified and appended to `process.argv` in the worker. This is mostly similar to the `workerData` but the values will be available on the global `process.argv` as if they were passed as CLI options to the script.",
+              "required": true,
+              "additionalTags": [],
+              "collection": true,
+              "type": "Any"
+            },
+            {
+              "name": "env",
+              "description": "If set, specifies the initial value of `process.env` inside the Worker thread. As a special value, `worker.SHARE_ENV` may be used to specify that the parent thread and the child thread should share their environment variables; in that case, changes to one thread’s `process.env` object will affect the other thread as well. **Default:** `process.env`.",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Object",
+              "properties": []
+            },
+            {
+              "name": "eval",
+              "description": "If `true`, interpret the first argument to the constructor as a script that is executed once the worker is online.",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Boolean"
+            },
+            {
+              "name": "execArgv",
+              "description": "List of node CLI options passed to the worker. V8 options (such as `--max-old-space-size`) and options that affect the process (such as `--title`) are not supported. If set, this will be provided as `process.execArgv` inside the worker. By default, options will be inherited from the parent thread.",
+              "required": true,
+              "additionalTags": [],
+              "collection": true,
+              "type": "String",
+              "possibleValues": null
+            },
+            {
+              "name": "stdin",
+              "description": "If this is set to `true`, then `worker.stdin` will provide a writable stream whose contents will appear as `process.stdin` inside the Worker. By default, no data is provided.",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Boolean"
+            },
+            {
+              "name": "stdout",
+              "description": "",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Boolean If this is set to `true`, then `worker.stdout` will not automatically be piped through to `process.stdout` in the parent."
+            },
+            {
+              "name": "stderr",
+              "description": "If this is set to `true`, then `worker.stderr` will not automatically be piped through to `process.stderr` in the parent.",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Boolean"
+            },
+            {
+              "name": "workerData",
+              "description": "Any JavaScript value that will be cloned and made available as `require('worker_threads').workerData`. The cloning will occur as described in the HTML structured clone algorithm, and an error will be thrown if the object cannot be cloned (e.g. because it contains `function`s).",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Any"
+            },
+            {
+              "name": "resourceLimits",
+              "description": "An optional set of resource limits for the new JS engine instance. Reaching these limits will lead to termination of the `Worker` instance. These limits only affect the JS engine, and no external data, including no `ArrayBuffer`s. Even if these limits are set, the process may still abort if it encounters a global out-of-memory situation.",
+              "required": true,
+              "additionalTags": [],
+              "collection": false,
+              "type": "Object",
+              "properties": [
+                {
+                  "name": "maxOldGenerationSizeMb",
+                  "description": "",
+                  "required": true,
+                  "additionalTags": [],
+                  "collection": false,
+                  "type": "{number} The maximum size of the main heap in MB."
+                },
+                {
+                  "name": "maxYoungGenerationSizeMb",
+                  "description": "",
+                  "required": true,
+                  "additionalTags": [],
+                  "collection": false,
+                  "type": "{number} The maximum size of a heap space for recently created objects."
+                },
+                {
+                  "name": "codeRangeSizeMb",
+                  "description": "allocated memory range used for generated code.",
+                  "required": true,
+                  "additionalTags": [],
+                  "collection": false,
+                  "type": "{number} The size of a pre"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "staticMethods": [],
+    "staticProperties": [],
+    "instanceMethods": [
+      {
+        "name": "postMessage",
+        "signature": "(value[, transferList])",
+        "description": "Send a message to the worker that will be received via `require('worker_threads').parentPort.on('message')`. See `port.postMessage()` for more details.",
+        "parameters": [
+          {
+            "name": "value",
+            "description": "",
+            "required": true,
+            "collection": false,
+            "type": "Any"
+          },
+          {
+            "name": "transferList",
+            "description": "",
+            "required": false,
+            "collection": true,
+            "type": "Object",
+            "properties": []
+          }
+        ],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "ref",
+        "signature": "()",
+        "description": "Opposite of `unref()`, calling `ref()` on a previously `unref()`ed worker will *not* let the program exit if it's the only active handle left (the default behavior). If the worker is `ref()`ed, calling `ref()` again will have no effect.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      },
+      {
+        "name": "terminate",
+        "signature": "()",
+        "description": "Stop all JavaScript execution in the worker thread as soon as possible. Returns a Promise for the exit code that is fulfilled when the `'exit'` event is emitted.",
+        "parameters": [],
+        "returns": {
+          "collection": false,
+          "type": "Promise"
+        },
+        "additionalTags": []
+      },
+      {
+        "name": "unref",
+        "signature": "()",
+        "description": "Calling `unref()` on a worker will allow the thread to exit if this is the only active handle in the event system. If the worker is already `unref()`ed calling `unref()` again will have no effect.",
+        "parameters": [],
+        "returns": null,
+        "additionalTags": []
+      }
+    ],
+    "instanceProperties": [
+      {
+        "name": "resourceLimits",
+        "description": "An `Object` that has the following properties:\n\n* `maxYoungGenerationSizeMb` Number\n* `maxOldGenerationSizeMb` Number\n* `codeRangeSizeMb` Number\n\nProvides the set of JS engine resource constraints for this Worker thread. If the `resourceLimits` option was passed to the `Worker` constructor, this matches its values.\n\nIf the worker has stopped, the return value is an empty object.",
+        "required": true,
+        "additionalTags": [],
+        "collection": false,
+        "type": "Object",
+        "properties": [
+          {
+            "name": "maxYoungGenerationSizeMb",
+            "description": "",
+            "required": true,
+            "additionalTags": [],
+            "collection": false,
+            "type": "Number"
+          },
+          {
+            "name": "maxOldGenerationSizeMb",
+            "description": "",
+            "required": true,
+            "additionalTags": [],
+            "collection": false,
+            "type": "Number"
+          },
+          {
+            "name": "codeRangeSizeMb",
+            "description": "",
+            "required": true,
+            "additionalTags": [],
+            "collection": false,
+            "type": "Number"
+          }
+        ]
+      },
+      {
+        "name": "stderr",
+        "description": "A `stream.Readable`.\n\nThis is a readable stream which contains data written to `process.stderr` inside the worker thread. If `stderr: true` was not passed to the s`Worker` constructor, then data will be piped to the parent thread's `process.stderr` stream.",
+        "required": true,
+        "additionalTags": [],
+        "collection": false,
+        "type": "stream.Readable"
+      },
+      {
+        "name": "stdin",
+        "description": "A `stream.Writable|null`.\n\nIf `stdin: true` was passed to the `Worker` constructor, this is a writable stream. The data written to this stream will be made available in the worker thread as `process.stdin`.",
+        "required": true,
+        "additionalTags": [],
+        "collection": false,
+        "type": [
+          {
+            "collection": false,
+            "type": "stream.Writable"
+          },
+          {
+            "type": "null",
+            "collection": false
+          }
+        ]
+      },
+      {
+        "name": "stdout",
+        "description": "A `stream.Readable`.\n\nThis is a readable stream which contains data written to `process.stdout` inside the worker thread. If `stdout: true` was not passed to the `Worker` constructor, then data will be piped to the parent thread's `process.stdout` stream.",
+        "required": true,
+        "additionalTags": [],
+        "collection": false,
+        "type": "stream.Readable"
+      },
+      {
+        "name": "threadId",
+        "description": "An `Integer`.\n\nAn integer identifier for the referenced thread. Inside the worker thread, it is available as `require('worker_threads').threadId`. This value is unique for each `Worker` instance inside a single process.",
+        "required": true,
+        "additionalTags": [],
+        "collection": false,
+        "type": "Integer"
+      }
+    ],
+    "instanceEvents": [
+      {
+        "name": "error",
+        "description": "The `'error'` event is emitted if the worker thread throws an uncaught exception. In that case, the worker will be terminated.",
+        "parameters": [],
+        "additionalTags": []
+      },
+      {
+        "name": "exit",
+        "description": "The `'exit'` event is emitted once the worker has stopped. If the worker exited by calling `process.exit()`, the `exitCode` parameter will be the passed exit code. If the worker was terminated, the `exitCode` parameter will be `1`.",
+        "parameters": [],
+        "additionalTags": []
+      },
+      {
+        "name": "message",
+        "description": "The `'message'` event is emitted when the worker thread has invoked `require('worker_threads').parentPort.postMessage()`. See the `port.on('message')` event for more details.",
+        "parameters": [],
+        "additionalTags": []
+      },
+      {
+        "name": "online",
+        "description": "The `'online'` event is emitted when the worker thread has started executing JavaScript code.",
+        "parameters": [],
+        "additionalTags": []
+      }
+    ],
+    "instanceName": "worker"
   }
 ]
