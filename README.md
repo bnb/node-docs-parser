@@ -15,8 +15,19 @@ next, you'll need to navigate to the direcory and then run the CLI:
 
 ```sh
 cd node-docs-parser
-electron-docs-parser --dir ./ # this will build the docs!
+npm run parser # this will build the docs!
 ```
+
+## Repository Structure
+
+- `/docs/api/`
+  - where the API docs live. `electron-docs-parser`looks here by default.
+- `/docs/api/structures/`
+  - required to exist by `electron-docs-parser`. Not currently in use but maybe probably should be?
+- `/originals/`
+  - original sources from the Node.js repo for docs in `/docs/api/`
+- `/electron-api.json`
+  - JSON output. Currently somehwat Electron specfici due to hard-coded-ness of the `@electron/docs-parser` tool, but there's currently a PR open to make this more dynamic ([electron/docs-parser#21](https://github.com/electron/docs-parser/pull/21)).
 
 ## Current Blockers
 
@@ -24,10 +35,6 @@ electron-docs-parser --dir ./ # this will build the docs!
 - Moving as-is, Node.js would _seemingly_ lose the ability to include meta information (`introduced`, `stability`, and `history`)
   - Having discussed this with Sam from Electron, there are ways we'd be able to address this.
 - Currently a bug in which multi-mode outputs incorrect descriptions for additional instances of `Class` in the JSON output. [electron/docs-parser#17](https://github.com/electron/docs-parser/issues/27)
-
-## Outstanding Questions
-
-- For Classes, it is stated that `Constructors must be listed with ###-level titles.` in the Electron Docs Styleguide. However, there doesn't seem to be a direct example in the styleguide. At present, in `v8.md` I'm approaching this by just including the constructor in the text of the Class definition but this should probably be figured out and moved to the correct location.
 
 ## Lessons Learned
 
