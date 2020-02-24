@@ -11,11 +11,17 @@ git clone git@github.com:bnb/node-docs-parser.git
 npm i -g @electron/docs-parser
 ```
 
+you'll also need to create an (empty) `strucutres` directory in `docs/api/` (just because I've not committed any files to it):
+
+```sh
+mkdir docs/api/structures
+```
+
 next, you'll need to navigate to the direcory and then run the CLI:
 
 ```sh
 cd node-docs-parser
-npm run parser # this will build the docs!
+npm run parse # this will build the docs!
 ```
 
 ## Repository Structure
